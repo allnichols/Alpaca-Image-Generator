@@ -3,7 +3,7 @@
 }
 
 .container {
-  width: min(80% - 2rem, 60rem);
+  width: min(90% - 2rem, 80rem);
   margin-inline: auto;
   margin-top: 4rem;
 }
@@ -15,12 +15,11 @@
 
 .app {
   display: flex;
-  justify-content: space-between;
-  gap: 2rem;
+  gap: 4rem;
 }
 
 .image_container {
-  width: 50%;
+  width: 100%;
   position: relative;
 }
 
@@ -34,11 +33,12 @@
 .eyes,
 .ears,
 .hair,
-.leg {
+.leg,
+.accessory {
   position: absolute;
   left: 0;
   width: 100%;
-  bottom: 0;
+  /* bottom: 0; */
 }
 
 .category {
@@ -48,6 +48,8 @@
 
 .category__choices {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 0.5rem;
 }
 

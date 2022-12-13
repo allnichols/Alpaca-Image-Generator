@@ -23,9 +23,15 @@ test("Renders base images", () => {
 test("User can choose style and state will change", async () => {
   const user = userEvent;
   render(<App />);
-  const hair = screen.getByRole("button", { name: /curls/i });
-  await user.click(hair);
-  expect(hair).toHaveClass("btn--selected");
+  const hairBtn = screen.getByRole("button", { name: /curls/i });
+  const hairImg = screen.getByAltText("hair");
+  await user.click(hairBtn);
+  expect(hairBtn).toHaveClass("btn--selected");
+  expect(hairImg).toHaveAttribute("src", "./alpaca/hair/curls.png");
 });
 
-test.todo("User can download image");
+test("User can randomize images", () => {
+  const userClick = userEvent;
+  render(<App />);
+  const randomBtn = screen.getByRole("button", { name: /randomize/i });
+});
