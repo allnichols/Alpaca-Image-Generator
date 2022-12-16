@@ -46,6 +46,16 @@
   flex-direction: column;
 }
 
+.category__title {
+  text-transform: capitalize;
+}
+
+.category__selections {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
 .category__choices {
   display: flex;
   flex-direction: row;
@@ -72,4 +82,19 @@
 .btn--selected {
   color: white;
   background: var(--color-primary);
+}
+
+.util__container {
+  margin-top: 1rem;
+}
+
+.btn__util {
+  background: white;
+  color: black;
+  font-size: 1rem;
+  font-family: sans-serif;
+  border: none;
+  padding: 1em 1.5em;
+  margin-right: 1rem;
+  cursor: pointer;
 }

@@ -29,9 +29,3 @@ test("User can choose style and state will change", async () => {
   expect(hairBtn).toHaveClass("btn--selected");
   expect(hairImg).toHaveAttribute("src", "./alpaca/hair/curls.png");
 });
-
-test("User can randomize images", () => {
-  const userClick = userEvent;
-  render(<App />);
-  const randomBtn = screen.getByRole("button", { name: /randomize/i });
-});

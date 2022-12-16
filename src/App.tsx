@@ -1,16 +1,7 @@
 import React from "react";
-import Category from "./categories/Category";
 import Preview from "./components/Preview";
-import {
-  backgrounds,
-  hair,
-  eyes,
-  ears,
-  mouths,
-  necks,
-  legs,
-  accessories,
-} from "./categories/categories";
+import Categories from "./components/categories/Categories";
+import { categoryData } from "./components/categories/data";
 import { exportComponentAsPNG } from "react-component-export-image";
 import "./App.css";
 
@@ -25,17 +16,52 @@ function App(): React.ReactElement {
     mouth: "default",
     hair: "default",
     accessory: "earings",
-
     eyes: "default",
   });
 
   const changeStyle = (e: React.MouseEvent<HTMLButtonElement>) => {
     const dataset: any = e.currentTarget.dataset["type"];
     const style: string | undefined = e.currentTarget.id;
-
+    console.log(dataset, style);
     setStyle((prevState) => ({
       ...prevState,
       [dataset]: style,
+    }));
+  };
+
+  const randomize = () => {
+    const randomStyles = {
+      backgrounds:
+        categoryData.backgrounds[
+          Math.floor(Math.random() * categoryData.backgrounds.length)
+        ],
+      ears: categoryData.ears[
+        Math.floor(Math.random() * categoryData.ears.length)
+      ],
+      eyes: categoryData.eyes[
+        Math.floor(Math.random() * categoryData.eyes.length)
+      ],
+      neck: categoryData.neck[
+        Math.floor(Math.random() * categoryData.neck.length)
+      ],
+      leg: categoryData.leg[
+        Math.floor(Math.random() * categoryData.leg.length)
+      ],
+      mouth:
+        categoryData.mouth[
+          Math.floor(Math.random() * categoryData.mouth.length)
+        ],
+      hair: categoryData.hair[
+        Math.floor(Math.random() * categoryData.hair.length)
+      ],
+      accessory:
+        categoryData.accessory[
+          Math.floor(Math.random() * categoryData.accessory.length)
+        ],
+    };
+    setStyle((prevState) => ({
+      ...prevState,
+      ...randomStyles,
     }));
   };
 
@@ -43,67 +69,23 @@ function App(): React.ReactElement {
     <div className="container">
       <h1 className="title">Alpaca Generator</h1>
       <div className="app">
-        <Preview styles={styles} refProp={imageRef} />
-        <div className="categories">
-          <Category
-            title="Hair"
-            choices={hair}
-            style={styles.hair}
-            onSelect={changeStyle}
-          />
-          <Category
-            title="Backgrounds"
-            choices={backgrounds}
-            style={styles.backgrounds}
-            onSelect={changeStyle}
-          />
-          <Category
-            title="Eyes"
-            choices={eyes}
-            style={styles.eyes}
-            onSelect={changeStyle}
-          />
-          <Category
-            title="Ears"
-            choices={ears}
-            style={styles.ears}
-            onSelect={changeStyle}
-          />
-          <Category
-            title="Neck"
-            choices={necks}
-            style={styles.neck}
-            onSelect={changeStyle}
-          />
-          <Category
-            title="Mouth"
-            choices={mouths}
-            style={styles.mouth}
-            onSelect={changeStyle}
-          />
-          <Category
-            title="Leg"
-            choices={legs}
-            style={styles.leg}
-            onSelect={changeStyle}
-          />
-          <Category
-            title="Accessory"
-            choices={accessories}
-            style={styles.accessory}
-            onSelect={changeStyle}
-          />
+        <div>
+          <Preview styles={styles} refProp={imageRef} />
+          <div className="util__container">
+            <button className="btn__util" onClick={() => randomize()}>
+              Randomize
+            </button>
+            <button
+              className="btn__util"
+              onClick={() =>
+                exportComponentAsPNG(imageRef, { fileName: "Your Alpaca" })
+              }
+            >
+              Download
+            </button>
+          </div>
         </div>
-      </div>
-      <div>
-        <button>Randomize</button>
-        <button
-          onClick={() =>
-            exportComponentAsPNG(imageRef, { fileName: "Your Alpaca" })
-          }
-        >
-          Download
-        </button>
+        <Categories onSelect={changeStyle} />
       </div>
     </div>
   );

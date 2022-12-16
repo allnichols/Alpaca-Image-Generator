@@ -1,0 +1,38 @@
+export const categoryData = {
+  hair: ["default", "curls", "short", "bang", "elegant", "quiff"],
+  eyes: ["default", "angry", "naughty", "panda", "smart", "star"],
+  ears: ["default", "tilt-backward", "tilt-forward"],
+  leg: [
+    "default",
+    "bubble-tea",
+    "cookie",
+    "game-console",
+    "tilt-backward",
+    "tilt-forward",
+  ],
+  mouth: ["default", "astonished", "eating", "laugh", "tongue"],
+
+  neck: ["default", "thick", "bend-forward", "bend-backward"],
+
+  accessory: ["earings", "flower", "glasses", "headphone"],
+  backgrounds: [
+    "blue50",
+    "blue60",
+    "blue70",
+    "darkblue30",
+    "darkblue50",
+    "darkblue70",
+    "green50",
+    "green60",
+    "green70",
+    "grey40",
+    "grey70",
+    "grey80",
+    "red50",
+    "red60",
+    "red70",
+    "yellow50",
+    "yellow60",
+    "yellow70",
+  ],
+};
