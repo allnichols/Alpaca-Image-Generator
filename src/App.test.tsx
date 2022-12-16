@@ -25,7 +25,7 @@ test("User can choose style and state will change", async () => {
   render(<App />);
   const hairBtn = screen.getByRole("button", { name: /curls/i });
   const hairImg = screen.getByAltText("hair");
-  await user.click(hairBtn);
+  user.click(hairBtn);
   expect(hairBtn).toHaveClass("btn--selected");
   expect(hairImg).toHaveAttribute("src", "./alpaca/hair/curls.png");
 });
